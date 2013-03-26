@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+      
+      
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      <af:resource type="javascript" source="/js/jquery-1.7.1.min.js"/>
+      <af:resource type="css" source="/css/leaflet-0.5.css"/>
+      <af:resource type="javascript" source="/js/leaflet-0.5.js"/>
+      <af:resource type="javascript" source="/js/adf-leaflet.js"/>
+      
+      <af:panelGroupLayout layout="vertical">
+            <af:panelGroupLayout layout="horizontal">
+                  <af:panelGroupLayout clientComponent="true" id="map-panel">
+                        <div id="adf-map-div" style="width:800px;height:400px"></div>
+                        <af:serverListener type="jsServerListener"
+                                           method="#{LeafletManagedBean.serverEventHandler}"/>
+                  </af:panelGroupLayout>
+                  <af:spacer width="20"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout layout="horizontal">
+                  <af:inputText label="Find Your City" id="it1"
+                                binding="#{LeafletManagedBean.locationInputText}"
+                                valueChangeListener="#{LeafletManagedBean.onLocationSearchValueChange}"
+                                autoSubmit="true" columns="50">
+                        <af:autoSuggestBehavior suggestedItems="#{LeafletManagedBean.getSuggestedLocations}"/>
+                  </af:inputText>
+            </af:panelGroupLayout>
+      </af:panelGroupLayout>
+</jsp:root>

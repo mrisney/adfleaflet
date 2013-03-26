@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="adf-leaflet-task-flow">
+    <default-activity id="__1">leaflet-geonames</default-activity>
+    <managed-bean id="__3">
+      <managed-bean-name id="__5">LeafletManagedBean</managed-bean-name>
+      <managed-bean-class id="__2">org.risney.adf.view.LeafletManagedBean</managed-bean-class>
+      <managed-bean-scope id="__4">request</managed-bean-scope>
+    </managed-bean>
+    <view id="leaflet-geonames">
+      <page>/jsff/leaflet-geonames.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

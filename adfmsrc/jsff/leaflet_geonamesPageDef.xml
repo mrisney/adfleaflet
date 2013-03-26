@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.62.29" id="leaflet_geonamesPageDef"
+                Package="jsff">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="fuzzySearch"
+                  InstanceName="GeoNamesDataControl.dataProvider"
+                  DataControl="GeoNamesDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fuzzySearch"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.GeoNamesDataControl.methodResults.fuzzySearch_GeoNamesDataControl_dataProvider_fuzzySearch_result">
+      <NamedData NDName="searchString" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="getLocationAndWeatherWithPlaceName"
+                  InstanceName="GeoNamesDataControl.dataProvider"
+                  DataControl="GeoNamesDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="getLocationAndWeatherWithPlaceName"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.GeoNamesDataControl.methodResults.getLocationAndWeatherWithPlaceName_GeoNamesDataControl_dataProvider_getLocationAndWeatherWithPlaceName_result">
+      <NamedData NDName="placeName" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="getLocationAndWeatherWithCoordinates"
+                  InstanceName="GeoNamesDataControl.dataProvider"
+                  DataControl="GeoNamesDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="getLocationAndWeatherWithCoordinates"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.GeoNamesDataControl.methodResults.getLocationAndWeatherWithCoordinates_GeoNamesDataControl_dataProvider_getLocationAndWeatherWithCoordinates_result">
+      <NamedData NDName="latitude" NDType="java.lang.Double"/>
+      <NamedData NDName="longitude" NDType="java.lang.Double"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

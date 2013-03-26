@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.62.29"
+          id="Locations" Package="org.risney.adf.model"
+          BeanClass="org.risney.adf.model.Locations" isJavaBased="true">
+  <AccessorAttribute id="locations" IsCollection="true" AddMethod="addLocation"
+                     BeanClass="org.risney.adf.model.Locations.Location"
+                     CollectionBeanClass="UpdateableCollection">
+    <Properties>
+      <Property Name="AddMethod" Value="addLocation"/>
+    </Properties>
+  </AccessorAttribute>
+  <MethodAccessor IsCollection="false" Type="void" id="addLocation"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="location" Type="org.risney.adf.model.Locations.Location"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="toJSON"
+                  ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true" Type="org.risney.adf.model.Locations"
+                     BeanClass="org.risney.adf.model.Locations" id="Locations"/>
+</JavaBean>
