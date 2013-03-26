@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.62.29"
+          id="Location" Package="org.risney.adf.model.Locations"
+          BeanClass="org.risney.adf.model.Locations.Location"
+          isJavaBased="true">
+  <Attribute Name="placeName" Type="java.lang.String"/>
+  <Attribute Name="latitude" Type="java.lang.Double"/>
+  <Attribute Name="longitude" Type="java.lang.Double"/>
+  <AccessorAttribute id="weather" IsCollection="false"
+                     BeanClass="org.risney.adf.model.Weather"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="toJSON"
+                  ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="org.risney.adf.model.Locations.Location"
+                     BeanClass="org.risney.adf.model.Locations.Location"
+                     id="Location">
+    <ParameterInfo id="placeName" Type="java.lang.String" isStructured="false"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true"
+                     Type="org.risney.adf.model.Locations.Location"
+                     BeanClass="org.risney.adf.model.Locations.Location"
+                     id="Location"/>
+</JavaBean>

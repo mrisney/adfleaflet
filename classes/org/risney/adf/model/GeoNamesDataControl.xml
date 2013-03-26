@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.62.29"
+          id="GeoNamesDataControl" Package="org.risney.adf.model"
+          BeanClass="org.risney.adf.model.GeoNamesDataControl"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="false" Type="org.risney.adf.model.Locations"
+                  BeanClass="org.risney.adf.model.Locations" id="fuzzySearch"
+                  ReturnNodeName="Locations">
+    <ParameterInfo id="searchString" Type="java.lang.String"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false"
+                  Type="org.risney.adf.model.Locations.Location"
+                  BeanClass="org.risney.adf.model.Locations.Location"
+                  id="getLocationAndWeatherWithCoordinates"
+                  ReturnNodeName="Location">
+    <ParameterInfo id="latitude" Type="java.lang.Double" isStructured="false"/>
+    <ParameterInfo id="longitude" Type="java.lang.Double" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false"
+                  Type="org.risney.adf.model.Locations.Location"
+                  BeanClass="org.risney.adf.model.Locations.Location"
+                  id="getLocationAndWeatherWithPlaceName"
+                  ReturnNodeName="Location">
+    <ParameterInfo id="placeName" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="org.risney.adf.model.GeoNamesDataControl"
+                     BeanClass="org.risney.adf.model.GeoNamesDataControl"
+                     id="GeoNamesDataControl"/>
+</JavaBean>

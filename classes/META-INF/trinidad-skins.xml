@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<skins xmlns="http://myfaces.apache.org/trinidad/skin">
+ <skin>
+    <id>adf-leaflet-skin.desktop</id>
+    <family>adf-leaflet-skin</family>
+    <version>
+      <name></name>
+      <default></default>
+    </version>
+    <render-kit-id>org.apache.myfaces.trinidad.desktop</render-kit-id>
+    <extends>fusion.desktop</extends>
+    <style-sheet-name>/css/adf-leaflet.css</style-sheet-name>
+    <!--translation-source></translation-source-->
+    <!--bundle-name></bundle-name-->
+  </skin>
+</skins>

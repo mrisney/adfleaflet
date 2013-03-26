@@ -1,0 +1,4 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<task-flow-registry xmlns="http://xmlns.oracle.com/adf/controller/rc">
+   <task-flow-descriptor path="WEB-INF/taskflows/adf-leaflet-task-flow.xml" id="adf-leaflet-task-flow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+</task-flow-registry>
