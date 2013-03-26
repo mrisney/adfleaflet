@@ -10,19 +10,15 @@
       <af:resource type="javascript" source="/js/adf-leaflet.js"/>
       
       <af:panelGroupLayout layout="vertical">
-      <af:spacer height="20"/>
             <af:panelGroupLayout layout="horizontal">
-            <af:spacer width="40"/>
                   <af:panelGroupLayout clientComponent="true" id="map-panel">
-                        <div id="adf-map-div" style="width:600px;height:400px"></div>
+                        <div id="adf-map-div" style="width:800px;height:400px"></div>
                         <af:serverListener type="jsServerListener"
                                            method="#{LeafletManagedBean.serverEventHandler}"/>
                   </af:panelGroupLayout>
                   <af:spacer width="20"/>
             </af:panelGroupLayout>
-            <af:spacer height="20"/>
             <af:panelGroupLayout layout="horizontal">
-                 <af:spacer width="40"/>
                   <af:inputText label="Find Your City" id="it1"
                                 binding="#{LeafletManagedBean.locationInputText}"
                                 valueChangeListener="#{LeafletManagedBean.onLocationSearchValueChange}"

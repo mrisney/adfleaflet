@@ -165,7 +165,7 @@ public class GeoNamesDataControl {
             try {
                 double cel = weatherObservation.getTemperature();
                 double far = cel * 9 / 5 + 32;
-                String temperature = cel + "° Celsius, " + far + "° Fahrenheit";
+                String temperature = cel + "° Celsisus, " + far + "° Fahrenheit";
                 weather.setTemperature(temperature);
             } catch (Exception e) {
 
