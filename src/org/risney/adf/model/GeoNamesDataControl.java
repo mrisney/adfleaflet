@@ -107,16 +107,31 @@ public class GeoNamesDataControl {
         }
     }
 
+    /**
+     *
+     * @param toponym
+     * @return org.risney.adf.model.Locations.Location
+     *
+     * Creates a comma seperated string, by concatenating the Place name, followed the successive Admin codes
+     * that the adminName1, adminName2 and adminName3 provide - usually the city, followed by the state or province
+     * followed by the district or in the US - the county, followed by the country name. returns a Location object
+     *
+     */
     private Location getLocation(Toponym toponym) {
         Location location = new Locations().new Location();
-        StringBuffer sb = new StringBuffer();
+        StringBuffer sb = new StringBuffer(toponym.getName());
         try {
-            sb.append(toponym.getName());
             if (null != toponym.getAdminName1()) {
                 sb.append(", " + toponym.getAdminName1());
             }
+            if (null != toponym.getAdminName2()) {
+                sb.append(", " + toponym.getAdminName2());
+            }
+            if (null != toponym.getAdminName3()) {
+                sb.append(", " + toponym.getAdminName3());
+            }
         } catch (Exception e) {
-
+            System.out.println("unable to get administrative names from toponym, error :" + e.toString());
         }
         sb.append(", " + toponym.getCountryName());
         location.setPlaceName(sb.toString());
@@ -125,6 +140,15 @@ public class GeoNamesDataControl {
         return location;
     }
 
+    /**
+     *
+     * @param latitude
+     * @param longitude
+     * @return org.risney.adf.model.Weather
+     *
+     *  Using the geonames webservice, find the nearest wether report (usually the nearest airport)
+     *
+     */
     private Weather getWeather(Double latitude, Double longitude) {
         WebService.setUserName(USER_NAME);
         Weather weather = new Weather();
