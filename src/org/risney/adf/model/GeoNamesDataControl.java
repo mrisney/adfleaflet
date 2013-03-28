@@ -97,7 +97,12 @@ public class GeoNamesDataControl {
     /**
      *
      * @param placeName
-     * @return
+     * @return org.risney.adf.model.Locations.Location
+     * 
+     * Used by the fuzzySearch autocomplete method 'onLocationSearchValueChange' 
+     * in the managed bean LeafletManagedBean, this returns previously found candidates from geonames 
+     * that were stored in a HashMap (avoid a second query). Then get the weather for that location.
+     * 
      */
 
     public Location getLocationAndWeatherWithPlaceName(String placeName) {
