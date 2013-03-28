@@ -98,11 +98,11 @@ public class GeoNamesDataControl {
      *
      * @param placeName
      * @return org.risney.adf.model.Locations.Location
-     * 
-     * Used by the fuzzySearch autocomplete method 'onLocationSearchValueChange' 
-     * in the managed bean LeafletManagedBean, this returns previously found candidates from geonames 
+     *
+     * Used by the fuzzySearch autocomplete method 'onLocationSearchValueChange'
+     * in the managed bean LeafletManagedBean, this returns previously found candidates from geonames
      * that were stored in a HashMap (avoid a second query). Then get the weather for that location.
-     * 
+     *
      */
 
     public Location getLocationAndWeatherWithPlaceName(String placeName) {
@@ -217,7 +217,9 @@ public class GeoNamesDataControl {
             weather.setClouds(weatherObservation.getClouds());
             weather.setWindSpeed(weatherObservation.getWindSpeed());
             String imagePath = weatherIconUtils.getImagePath(weatherObservation.getClouds(), weatherObservation.getWeatherCondition());
-            weather.setWeatherIcon(imagePath);
+            if (null != imagePath) {
+                weather.setWeatherIcon(imagePath);
+            }
 
         } catch (Exception e) {
             System.out.println(e.toString());

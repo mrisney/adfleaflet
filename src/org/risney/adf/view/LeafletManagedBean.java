@@ -100,9 +100,7 @@ public class LeafletManagedBean {
         Map LatLong = (Map)clientEvent.getParameters().get("LatLong");
         Double latitude = (Double)LatLong.get("lat");
         Double longitude = (Double)LatLong.get("lng");
-        System.out.println("latitude : " + latitude);
-        System.out.println("longitude : " + longitude);
-
+      
         // Execute the DataControl method 'getLocationAndWeatherWithCoordinates', getting back a Location object
         BindingContainer bindings = BindingContext.getCurrent().getCurrentBindingsEntry();
         OperationBinding operationBinding = bindings.getOperationBinding("getLocationAndWeatherWithCoordinates");
