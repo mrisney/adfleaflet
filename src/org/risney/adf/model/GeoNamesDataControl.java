@@ -24,6 +24,7 @@ public class GeoNamesDataControl {
     private static final Logger logger = Logger.getLogger(GeoNamesDataControl.class.getName());
     private static final int MAX_ROWS = 20;
     private static final String USER_NAME = "mrisney";
+    private static final String ICON_FILE_EXT = ".png";
     private Map<String, Location> suggestedLocations;
     private WeatherIconUtils weatherIconUtils;
 
@@ -192,16 +193,11 @@ public class GeoNamesDataControl {
                 }
             }
             if (null != weatherObservation.getClouds()) {
-
                 if (!weatherObservation.getClouds().equalsIgnoreCase("n/a")) {
+                    if (hasCondition) generalWeatherSB.append(", ");
                     generalWeatherSB.append(weatherObservation.getClouds());
                 }
-
-                if ((hasCondition) && (!weatherObservation.getClouds().equalsIgnoreCase("n/a"))) {
-                    generalWeatherSB.append("," + weatherObservation.getClouds());
-                }
             }
-
             String generalWeather = "";
             if (null != generalWeatherSB) {
                 generalWeather = generalWeatherSB.toString();
@@ -226,7 +222,7 @@ public class GeoNamesDataControl {
             weather.setWindSpeed(weatherObservation.getWindSpeed());
             String imagePath = weatherIconUtils.getImagePath(weatherObservation.getClouds(), weatherObservation.getWeatherCondition());
             if (null != imagePath) {
-                weather.setWeatherIcon(imagePath);
+                weather.setWeatherIcon(imagePath+ICON_FILE_EXT);
             }
 
         } catch (Exception ex) {

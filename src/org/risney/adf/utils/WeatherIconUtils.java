@@ -110,8 +110,8 @@ public class WeatherIconUtils {
 
     public String getImagePath(String cloud, String condition) {
     
-        logger.info("clouds :" + cloud);
-        logger.info("condition :" + condition);
+        logger.info("clouds : " + cloud);
+        logger.info("condition : " + condition);
 
         String imagePrefix = new String();
         if (null != cloud) {
@@ -129,7 +129,7 @@ public class WeatherIconUtils {
             }
         }
 
-        logger.info("prefix = " + imagePrefix);
-        return imagePrefix + ".png";
+        logger.info("image prefix : " + imagePrefix);
+        return imagePrefix;
     }
 }

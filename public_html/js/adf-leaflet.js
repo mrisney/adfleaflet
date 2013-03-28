@@ -1,5 +1,12 @@
   var map;
 
+  // Standard Leaflet.js setup routines, the 'adf-map-div' is a reference to the Div tag
+  // in the .jsff page, where  the map is to be rendered.
+  // using openstreetmaps for layer, could be swithched to MS Bing or Google maps
+  // Openstreetmaps has the least amount of restrictions.
+  // to learn more about setting up Leaflet.js - http://leafletjs.com/examples.html
+  // Also adding a watermark, or osmCopyright, acknowledging the organizations and corporations that
+  // this mashup utilizes
   function initMap() {
       map = new L.Map("adf-map-div");
       map.locate({
@@ -22,7 +29,6 @@
 
   function onLocationFound(e) {
       var radius = e.accuracy / 2;
-
       L.marker(e.latlng).addTo(map)
           .bindPopup("You are within " + radius + " meters from this point").openPopup();
 
@@ -50,21 +56,29 @@
   }
 
   function zoomToLocation(e) {
+  
+      // Casting the location JSON String sent from the managed bean, to a JSON Object
+      // for this example, displaying the weather and location, the "e" or event, could
+      // be a JSON String object of anything, or instructions to furthur interact with your 
+      // HTML5/js application - location and weather is easy data to get from geonames.org
+      // a real world application could pass more meaningful data across.
+      
       var location = JSON.parse(e);
       center = new L.LatLng(location.latitude, location.longitude);
       zoom = 12;
       map.setView(center, zoom);
       var contentStr;
       if (location.weather != null && location.weather.weatherIcon != null) {
-          contentStr = "<img src='img/" + location.weather.weatherIcon + "'><br>";
+          contentStr = "<img src='img/" + location.weather.weatherIcon + "'>";
           contentStr += "<br>" + location.weather.weatherCondition;
           contentStr += "<br>" + location.weather.temperature;
           contentStr += "<br> Windspeed : " + location.weather.windSpeed;
           contentStr += "<br> Updated : " + location.weather.observedTime;
       } else {
-          contentStr = "Weather conditions unavailable for"
+          contentStr = "Weather conditions unavailable at this time for"
       }
       contentStr += "<br>" + location.placeName;
+      contentStr += "<br> Latitude : " + location.latitude +", Longitude : "+location.longitude;
       
       var popup = L.popup()
           .setLatLng([location.latitude, location.longitude])
@@ -72,6 +86,11 @@
           .openOn(map);
   }
 
+  // Important ! - ADF generates quite a bit of Javascript for RichFaces.
+  // Creating an initialization routine, using JQuery's $(document).ready(function () 
+  // function - many hours were spent finding out when to initiate a JS routine outiside the
+  // JS that is created from ADF pages - very, very important to have this in any JS that you are
+  // incorporating into your ADF application, so that the instantiation of javascript loads on page load - appropriately.
   $(document).ready(function () {
       initMap();
   });

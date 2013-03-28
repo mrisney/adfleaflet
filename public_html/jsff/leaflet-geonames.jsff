@@ -20,10 +20,20 @@
                   </af:panelGroupLayout>
                   <af:spacer width="20"/>
             </af:panelGroupLayout>
+            
             <af:spacer height="20"/>
             <af:panelGroupLayout layout="horizontal">
             <af:spacer width="40"/>
-                  <af:inputText label="Find Your City" id="it1"
+            
+            <af:outputText value="Click on the map or type the first few letters of a City below, to get location and weather."/>
+            </af:panelGroupLayout>
+            <af:spacer height="12"/>
+            
+            <af:panelGroupLayout layout="horizontal">
+            <af:spacer width="40"/>
+                <af:outputText value="Find your City"/>
+                <af:spacer width="8"/>
+                  <af:inputText id="it1"
                                 binding="#{LeafletManagedBean.locationInputText}"
                                 valueChangeListener="#{LeafletManagedBean.onLocationSearchValueChange}"
                                 autoSubmit="true" columns="50">
