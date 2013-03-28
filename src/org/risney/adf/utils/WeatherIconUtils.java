@@ -2,8 +2,12 @@ package org.risney.adf.utils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class WeatherIconUtils {
+    private static final Logger logger = Logger.getLogger(WeatherIconUtils.class.getName());
     private static final String CLOUDY_ICON_PREFIX = "cloudy";
     private static final String FOG_ICON_PREFIX = "fog";
     private static final String HAIL_ICON_PREFIX = "hail";
@@ -63,6 +67,7 @@ public class WeatherIconUtils {
     public WeatherIconUtils() {
         super();
         init();
+        logger.setLevel(Level.ALL);
     }
 
     private void init() {
@@ -72,11 +77,11 @@ public class WeatherIconUtils {
         conditionIconMap.put(CLOUD_SCT, SUNNY_INTERVAL_ICON_PREFIX);
         conditionIconMap.put(CLOUD_BKN, SUNNY_INTERVAL_ICON_PREFIX);
         conditionIconMap.put(CLOUD_OVC, OVERCAST_ICON_PREFIX);
-        conditionIconMap.put(CLOUD_CAVOK, SUNNY_PERIOD_ICON_PREFIX);
+        conditionIconMap.put(CLOUD_CAVOK, SUNNY_ICON_PREFIX);
         conditionIconMap.put(CLOUD_NCD, SUNNY_ICON_PREFIX);
         conditionIconMap.put(CLOUD_NSC, CLOUDY_ICON_PREFIX);
         conditionIconMap.put(CLOUD_VV, CLOUDY_ICON_PREFIX);
-        
+
         conditionIconMap.put(CONDITION_DZ, LIGHT_SHOWERS_ICON_PREFIX);
         conditionIconMap.put(CONDITION_RA, RAIN_ICON_PREFIX);
         conditionIconMap.put(CONDITION_SN, SNOW_ICON_PREFIX);
@@ -84,7 +89,7 @@ public class WeatherIconUtils {
         conditionIconMap.put(CONDITION_IC, LIGHT_SNOW_ICON_PREFIX);
         conditionIconMap.put(CONDITION_PL, LIGHT_SNOW_ICON_PREFIX);
         conditionIconMap.put(CONDITION_GR, HAIL_ICON_PREFIX);
-        
+
         conditionIconMap.put(CONDITION_GS, HAIL_ICON_PREFIX);
         conditionIconMap.put(CONDITION_UP, LIGHT_RAIN_ICON_PREFIX);
         conditionIconMap.put(CONDITION_BR, FOG_ICON_PREFIX);
@@ -104,17 +109,27 @@ public class WeatherIconUtils {
     }
 
     public String getImagePath(String cloud, String condition) {
-        String imagePrefix = "unknown";
+    
+        logger.info("clouds :" + cloud);
+        logger.info("condition :" + condition);
+
+        String imagePrefix = new String();
         if (null != cloud) {
             if (!cloud.equalsIgnoreCase("n/a")) {
-                imagePrefix = conditionIconMap.get(cloud.trim().toLowerCase());
+                if (null != conditionIconMap.get(cloud.trim())) {
+                    imagePrefix = conditionIconMap.get(cloud.trim());
+                }
             }
         }
         if (null != condition) {
             if (!condition.equalsIgnoreCase("n/a")) {
-                imagePrefix = conditionIconMap.get(condition.trim().toLowerCase());
+                if (null != conditionIconMap.get(condition.trim())) {
+                    imagePrefix = conditionIconMap.get(condition.trim());
+                }
             }
         }
-        return imagePrefix+".png";
+
+        logger.info("prefix = " + imagePrefix);
+        return imagePrefix + ".png";
     }
 }

@@ -1,5 +1,7 @@
 package org.risney.adf.model;
 
+import java.util.Date;
+
 public class Weather {
     private String stationName;
     private String ICAOCode;
@@ -10,6 +12,7 @@ public class Weather {
     private String windSpeed;
     private String elevation;
     private String weatherIcon;
+    private Date observedTime;
 
     public Weather() {
         super();
@@ -85,5 +88,13 @@ public class Weather {
 
     public String getWeatherIcon() {
         return weatherIcon;
+    }
+
+    public void setObservedTime(Date observedTime) {
+        this.observedTime = observedTime;
+    }
+
+    public Date getObservedTime() {
+        return observedTime;
     }
 }

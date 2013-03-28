@@ -56,10 +56,11 @@
       map.setView(center, zoom);
       var contentStr;
       if (location.weather != null && location.weather.weatherIcon != null) {
-          contentStr = "<img src='img/" + location.weather.weatherIcon + "'>";
+          contentStr = "<img src='img/" + location.weather.weatherIcon + "'><br>";
           contentStr += "<br>" + location.weather.weatherCondition;
           contentStr += "<br>" + location.weather.temperature;
           contentStr += "<br> Windspeed : " + location.weather.windSpeed;
+          contentStr += "<br> Updated : " + location.weather.observedTime;
       } else {
           contentStr = "Weather conditions unavailable for"
       }

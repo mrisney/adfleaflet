@@ -1,5 +1,6 @@
 package org.risney.adf.model;
 
+
 import java.text.DecimalFormat;
 
 import java.util.HashMap;
@@ -29,7 +30,9 @@ public class GeoNamesDataControl {
     public GeoNamesDataControl() {
         super();
         weatherIconUtils = new WeatherIconUtils();
+        logger.setLevel(Level.ALL);
     }
+
 
     /**
      *
@@ -59,7 +62,7 @@ public class GeoNamesDataControl {
                 locations.addLocation(location);
             }
         } catch (Exception ex) {
-            logger.log(Level.SEVERE, ex.getMessage());
+            logger.severe(ex.getMessage());
         }
         return locations;
     }
@@ -92,7 +95,7 @@ public class GeoNamesDataControl {
             }
 
         } catch (Exception ex) {
-            logger.log(Level.SEVERE, ex.getMessage());
+            logger.severe(ex.getMessage());
         }
         return location;
     }
@@ -115,7 +118,7 @@ public class GeoNamesDataControl {
             location.setWeather(weather);
             return location;
         } catch (Exception ex) {
-            logger.log(Level.WARNING, ex.getMessage());
+            logger.warning(ex.getMessage());
             return null;
         }
     }
@@ -142,7 +145,7 @@ public class GeoNamesDataControl {
         try {
             // Workaround as the Toponym from WebServices.findNearbyPlaceName does not contain
             // AdminName1, however the resulting Toponym from WebService.get does.
-            // so if this Boolean is true, re-query the toponym, using the geonam identifier.
+            // so if this Boolean is true, re-query the toponym, using the geoname identifier.
             if (reQueryWebServie) {
                 WebService.setUserName(USER_NAME);
                 toponym = WebService.get(toponym.getGeoNameId(), null, null);
@@ -152,7 +155,7 @@ public class GeoNamesDataControl {
             }
 
         } catch (Exception ex) {
-            logger.log(Level.WARNING, ex.getMessage());
+            logger.warning(ex.getMessage());
         }
         sb.append(", " + toponym.getCountryName());
         location.setPlaceName(sb.toString());
@@ -178,7 +181,7 @@ public class GeoNamesDataControl {
             weather.setStationName(weatherObservation.getStationName());
             weather.setICAOCode(weatherObservation.getIcaoCode());
             weather.setElevation(weatherObservation.getElevation().toString());
-
+            weather.setObservedTime(weatherObservation.getObservationTime());
             // concatenate clouds and condition
             boolean hasCondition = false;
             StringBuffer generalWeatherSB = new StringBuffer();
@@ -215,7 +218,7 @@ public class GeoNamesDataControl {
                 String temperature = cel + "° Celsius, " + far + "° Fahrenheit";
                 weather.setTemperature(temperature);
             } catch (Exception ex) {
-                logger.log(Level.WARNING, "unable to convert temperature to fahrenheit, error :" + ex.toString());
+                logger.warning("unable to convert temperature to fahrenheit, error :" + ex.toString());
             }
 
             weather.setHumidity(weatherObservation.getHumidity() + "");
@@ -227,7 +230,7 @@ public class GeoNamesDataControl {
             }
 
         } catch (Exception ex) {
-            logger.log(Level.WARNING, "unable to get weather, errors : "+ex.getMessage());
+            logger.warning("unable to get weather, errors : " + ex);
         }
         return weather;
     }

@@ -36,6 +36,7 @@ public class LeafletManagedBean {
     private RichInputText locationInputText;
 
     public LeafletManagedBean() {
+        logger.setLevel(Level.ALL);
     }
 
     /**
@@ -70,8 +71,7 @@ public class LeafletManagedBean {
     /**
      *
      * @param valueChangeEvent
-     * Capture the auto-completed value,
-     * executing the DataControl method 'getLocationAndWeatherWithPlaceName'
+     * Capture the auto-completed value, executing the DataControl method 'getLocationAndWeatherWithPlaceName'
      * getting back a Location object.
      * Then calling the method 'zoomToLocation' in adf-leaflet.js
      *
@@ -83,8 +83,12 @@ public class LeafletManagedBean {
             OperationBinding operationBinding = bindings.getOperationBinding("getLocationAndWeatherWithPlaceName");
             operationBinding.getParamsMap().put("placeName", placeName);
             operationBinding.execute();
-            Location location = (Location)operationBinding.getResult();
-            executeJavaScript("zoomToLocation('" + location.toJSON() + "')");
+            try {
+                Location location = (Location)operationBinding.getResult();
+                executeJavaScript("zoomToLocation('" + location.toJSON() + "')");
+            } catch (Exception ex) {
+                logger.warning("unable to get location,  error : " + ex);
+            }
         }
     }
 
