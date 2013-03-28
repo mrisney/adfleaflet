@@ -1,5 +1,7 @@
 package org.risney.adf.model;
 
+import java.text.DecimalFormat;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,7 +51,7 @@ public class GeoNamesDataControl {
 
             ToponymSearchResult searchResult = WebService.search(searchCriteria);
             for (Toponym toponym : searchResult.getToponyms()) {
-                Location location = getLocation(toponym);
+                Location location = getLocation(toponym, false);
                 suggestedLocations.put(location.getPlaceName(), location);
                 locations.addLocation(location);
             }
@@ -78,12 +80,14 @@ public class GeoNamesDataControl {
         WebService.setUserName(USER_NAME);
         Location location = new Locations().new Location();
         try {
+
             List<Toponym> toponyms = WebService.findNearbyPlaceName(latitude, longitude);
             for (Toponym toponym : toponyms) {
-                location = getLocation(toponym);
+                location = getLocation(toponym, true);
                 Weather weather = getWeather(location.getLatitude(), location.getLongitude());
                 location.setWeather(weather);
             }
+
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -110,26 +114,32 @@ public class GeoNamesDataControl {
     /**
      *
      * @param toponym
+     * @param reQueryWebServie
      * @return org.risney.adf.model.Locations.Location
      *
      * Creates a comma seperated string, by concatenating the Place name, followed the successive Admin codes
      * that the adminName1, adminName2 and adminName3 provide - usually the city, followed by the state or province
      * followed by the district or in the US - the county, followed by the country name. returns a Location object
      *
+     * There seems to be a bug in WebServices.findNearbyPlaceName - that returns a Toponym without a full feature,
+     * so using  WebService.get(Toponym.getGeoNameId()..) seems to solve that problem.
+     * Passing a Boolean lets this method know wether to call it or not.
+     *
      */
-    private Location getLocation(Toponym toponym) {
+    private Location getLocation(Toponym toponym, Boolean reQueryWebServie) {
         Location location = new Locations().new Location();
         StringBuffer sb = new StringBuffer(toponym.getName());
+
         try {
-            if (null != toponym.getAdminName1()) {
+            // nessecary workaround as the Toponym from
+            if (reQueryWebServie) {
+                WebService.setUserName(USER_NAME);
+                toponym = WebService.get(toponym.getGeoNameId(), null, null);
+            }
+            if (toponym.getAdminName1().length() > 0) {
                 sb.append(", " + toponym.getAdminName1());
             }
-            if (null != toponym.getAdminName2()) {
-                sb.append(", " + toponym.getAdminName2());
-            }
-            if (null != toponym.getAdminName3()) {
-                sb.append(", " + toponym.getAdminName3());
-            }
+
         } catch (Exception e) {
             System.out.println("unable to get administrative names from toponym, error :" + e.toString());
         }
@@ -189,6 +199,9 @@ public class GeoNamesDataControl {
             try {
                 double cel = weatherObservation.getTemperature();
                 double far = cel * 9 / 5 + 32;
+                DecimalFormat twoDForm = new DecimalFormat("#.#");
+                far = Double.valueOf(twoDForm.format(far));
+
                 String temperature = cel + "° Celsius, " + far + "° Fahrenheit";
                 weather.setTemperature(temperature);
             } catch (Exception e) {
@@ -214,17 +227,17 @@ public class GeoNamesDataControl {
         Double latitude = new Double(37.77493);
         Double longitude = new Double(-122.41942);
 
-        Locations locations = dataControl.fuzzySearch("San Francisco, California, United States");
-        System.out.println(locations.toJSON());
-        for (Locations.Location location : locations.getLocations()) {
-            System.out.println(location.toJSON());
-        }
+        //  Locations locations = dataControl.fuzzySearch("San Francisco, California, United States");
+        //  System.out.println(locations.toJSON());
+        //   for (Locations.Location location : locations.getLocations()) {
+        //      System.out.println(location.toJSON());
+        //  }
 
         Location location01 = dataControl.getLocationAndWeatherWithCoordinates(latitude, longitude);
         System.out.println(location01.toJSON());
 
-        Location location02 = dataControl.getLocationAndWeatherWithPlaceName("San Francisco, California, United States");
-        System.out.println(location02.toJSON());
+        //  Location location02 = dataControl.getLocationAndWeatherWithPlaceName("San Francisco, California, United States");
+        //  System.out.println(location02.toJSON());
 
     }
 }
