@@ -1,38 +1,35 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
-      
-      
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       <af:resource type="javascript" source="/js/jquery-1.7.1.min.js"/>
       <af:resource type="css" source="/css/leaflet-0.5.css"/>
       <af:resource type="javascript" source="/js/leaflet-0.5.js"/>
       <af:resource type="javascript" source="/js/adf-leaflet.js"/>
-      
       <af:panelGroupLayout layout="vertical">
-      <af:spacer height="20"/>
+            <af:spacer height="20"/>
             <af:panelGroupLayout layout="horizontal">
-            <af:spacer width="40"/>
+                  <af:spacer width="40"/>
+                  <!-- By setting clientComponet to truem this creates a client instance, for a javascript function,within 
+            the panelGroupLayout, using a standard HTML <div> tag, to render the HTML5 canvas -->
                   <af:panelGroupLayout clientComponent="true" id="map-panel">
                         <div id="adf-map-div" style="width:600px;height:400px"></div>
+                        <!-- This setting identifies the LeafletManagedBean.serverEventHandler, where Client side javascript
+                        can pass parameters -->
                         <af:serverListener type="jsServerListener"
                                            method="#{LeafletManagedBean.serverEventHandler}"/>
                   </af:panelGroupLayout>
                   <af:spacer width="20"/>
             </af:panelGroupLayout>
-            
             <af:spacer height="20"/>
             <af:panelGroupLayout layout="horizontal">
-            <af:spacer width="40"/>
-            
-            <af:outputText value="Click on the map or type the first few letters of a City below, to get location and weather."/>
+                  <af:spacer width="40"/>
+                  <af:outputText value="Click on the map or type the first few letters of a City below, to get location and weather."/>
             </af:panelGroupLayout>
             <af:spacer height="12"/>
-            
             <af:panelGroupLayout layout="horizontal">
-            <af:spacer width="40"/>
-                <af:outputText value="Find your City"/>
-                <af:spacer width="8"/>
+                  <af:spacer width="40"/>
+                  <af:outputText value="Find your City"/>
+                  <af:spacer width="8"/>
                   <af:inputText id="it1"
                                 binding="#{LeafletManagedBean.locationInputText}"
                                 valueChangeListener="#{LeafletManagedBean.onLocationSearchValueChange}"

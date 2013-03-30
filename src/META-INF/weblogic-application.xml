@@ -5,6 +5,11 @@
   <listener>
     <listener-class>oracle.adf.share.weblogic.listeners.ADFApplicationLifecycleListener</listener-class>
   </listener>
+  <!--
+  <listener>
+    <listener-class>oracle.mds.lcm.weblogic.WLLifecycleListener</listener-class>
+  </listener>
+  -->
   <listener>
     <listener-class>oracle.mds.lcm.weblogic.WLLifecycleListener</listener-class>
   </listener>

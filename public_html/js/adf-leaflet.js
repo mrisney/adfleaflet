@@ -48,7 +48,7 @@
       // This is important, this references in the jsff, where the clientComponent 
       // is  set to true, when your embedd a .jsff into a region, it is the region name: panelGroupLayout id
       // so the leaflet-geonames.jsff is in the index.jspx "r1"
-      //  <af:region value="#{bindings.adfleaflettaskflow1.regionModel}" id="r1"/>
+      // <af:region value="#{bindings.adfleaflettaskflow1.regionModel}" id="r1"/>
       // <af:panelGroupLayout clientComponent="true" id="map-panel">
       
       var eventSource = AdfPage.PAGE.findComponentByAbsoluteId("r1:map-panel");
