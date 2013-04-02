@@ -9,8 +9,8 @@
             <af:spacer height="20"/>
             <af:panelGroupLayout layout="horizontal">
                   <af:spacer width="40"/>
-                  <!-- By setting clientComponet to truem this creates a client instance, for a javascript function,within 
-            the panelGroupLayout, using a standard HTML <div> tag, to render the HTML5 canvas -->
+                  <!-- By setting clientComponet to truem this creates a client instance, for a javascript function,
+                  within the panelGroupLayout, using a standard HTML <div> tag, to render the HTML5 canvas -->
                   <af:panelGroupLayout clientComponent="true" id="map-panel">
                         <div id="adf-map-div" style="width:600px;height:400px"></div>
                         <!-- This setting identifies the LeafletManagedBean.serverEventHandler, where Client side javascript

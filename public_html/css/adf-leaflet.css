@@ -48,7 +48,7 @@ CONTENTS:
 af|document,.af_document.p_AFMaximized
 {
   background-color: #FEFEFE;
-  font-family: 'Avenir_Light', Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 14px;
   color: #716F67;
   background-repeat:repeat;
@@ -56,7 +56,7 @@ af|document,.af_document.p_AFMaximized
 }
 
 body  {
-    font-family:  'Avenir_Light', Arial, sans-serif;
+    font-family:  "Helvetica Neue", Helvetica, sans-serif;
     font-size: 14px;
     color: #716F67;
     background: #FEFEFE;
@@ -75,7 +75,7 @@ svg:not(:root) { overflow: hidden; }
 --------------------------------------------*/
 
 .AFDefaultFont:alias{
-    font-family:  'Avenir_Light', Arial, sans-serif;
+    font-family:  "Helvetica Neue", Helvetica, sans-serif;
     font-size: 14px;
     margin-top: 0px;
     padding-top: 0px;
@@ -1291,7 +1291,7 @@ select::-moz-focus-inner { border: 0; }
 af|inputText::label{
     font-size: 12px;
     color: #3c3a37;
-    font-family: 'Avenir_Book', Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
 af|inputText::content, af|inputDate::content  {
@@ -3326,7 +3326,7 @@ af|panelWindow.detailPW::footer-end  {
     color:#666;
     display:block;
     margin-bottom:10px;
-    font-family: 'Avenir_Light', Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
 .tmpl-footer-col .header{
@@ -4215,7 +4215,7 @@ af|table.employer-resources-table  {
 
 af|table.employer-resources-table af|column::column-header-cell-content  {
   color: #063C5B;
-  font-family: 'Avenir_Book', Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 12px;
   font-weight: bold;
   text-align: left;
@@ -4250,7 +4250,7 @@ af|table.employer-resources-table af|column::column-header-cell {
 af|table.employer-resources-table af|column::data-cell  {
   border-bottom: #eeeeef 1px solid;
   color: #063C5B;
-  font-family: 'Avenir_Book', Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 12px;
   text-align: left;
   height: 25px;
@@ -4329,7 +4329,7 @@ af|table.employer-resources-table::detail-area-cell{
    height:158px;
    padding-top:80px;
    padding-left:20px;
-   font-family: 'Avenir_Light', Arial, sans-serif;
+   font-family: "Helvetica Neue", Helvetica, sans-serif;
    font-size:18px;
    text-align:left;
    color:#fff;
@@ -5296,7 +5296,7 @@ border: 1px solid;
   width: 250px;
   z-index: 200;
   font-size: 12px;
-  font-family: 'Avenir_Light', Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   letter-spacing: normal;
   position: absolute;
   border-bottom: 0;
@@ -5354,7 +5354,7 @@ border: 1px solid;
 }
 
 .help-title-container .page-title {
-  font-family: 'Avenir_Light', Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-weight: normal;
   font-weight: 12px;
   padding-left: 20px;
@@ -5385,7 +5385,7 @@ border: 1px solid;
 
 .help-sub .help-sub-text  {
   display: block;
-  font-family: 'Avenir_Light', Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-weight: normal;
   font-size: 14px;
 }
@@ -5402,7 +5402,7 @@ border: 1px solid;
 
 .help-chat-item  {
   font-weight: normal;
-  font-family: 'Avenir_Light', Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   padding: 8px;
   background: #fefefe;
   color: #000;
@@ -5439,7 +5439,7 @@ border: 1px solid;
 }
 
 .help-agent-container  {
-  font-family: 'Avenir_Light', Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 15px;
   color: #3c3a37;
   font-weight: normal;
@@ -5471,7 +5471,7 @@ border: 1px solid;
   text-decoration: underline;
   width: 111px;
   text-align: left;
-  font-family: 'Avenir_Light', Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
 .ctrlHolder {
@@ -5518,7 +5518,7 @@ border: 1px solid;
   margin: 0 auto;
   color: #000;
   padding: 8px;
-  font-family: 'Avenir_Light', Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-weight: normal;
   font-size: 12px;
   text-align: left;
@@ -5543,7 +5543,7 @@ border: 1px solid;
   border-left: 1px solid #dbdbdb;
   border-right: 1px solid #dbdbdb;
   color: #111;
-  font-family: 'Avenir_Light', Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
 .help-gloss-container af|inputText {
@@ -5806,7 +5806,7 @@ af|selectManyCheckbox::label{
 
       .glossaryHeader .rightSection .glossarySelectedValue {
         color: #9acc55;
-        font-family: 'Avenir_Book', Arial, sans-serif;
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
         font-size: 16px;
         float: left;
         margin: 0 4px;
@@ -5815,7 +5815,7 @@ af|selectManyCheckbox::label{
 
       .glossaryHeader .rightSection .glossaryValue {
         color: #059bd7;
-        font-family: 'Avenir_Book', Arial, sans-serif;
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
         font-size: 12px;
         float: left;
         margin: 4px 4px 2px 4px;
@@ -5833,7 +5833,7 @@ af|selectManyCheckbox::label{
     .glossaryContentArea .glossaryTitle {
       width: 865px;
       color: #073c5b;
-      font-family: 'Avenir_Book', Arial, sans-serif;
+      font-family: "Helvetica Neue", Helvetica, sans-serif;
       font-size: 14px;
       float: left;
       font-weight: bold;
@@ -5841,7 +5841,7 @@ af|selectManyCheckbox::label{
 
     .glossaryContentArea .glossaryText {
       color: #3c3a37;
-      font-family: 'Avenir_Book', Arial, sans-serif;
+      font-family: "Helvetica Neue", Helvetica, sans-serif;
       font-size: 12px;
       float: left;
       margin: 0px 0px 10px 0px;

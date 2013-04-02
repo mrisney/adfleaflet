@@ -15,10 +15,9 @@
       });
       map.attributionControl.setPrefix('');
       osmTile = "http://tile.openstreetmap.org/{z}/{x}/{y}.png";
-      osmCopyright = "&copy; oracle.com geonames.org openstreetmap.org https://github.com/mrisney/adfleaflet";
+      //osmCopyright = "&copy; oracle.com geonames.org openstreetmap.org https://github.com/mrisney/adfleaflet";
       osmLayer = new L.TileLayer(osmTile, {
-          maxZoom: 16,
-          attribution: osmCopyright
+          maxZoom: 16
       });
       map.addLayer(osmLayer);
       map.on('locationfound', onLocationFound);
@@ -44,14 +43,10 @@
       var param = {
           LatLong: e.latlng
       };
-      
-      // This is important, this references in the jsff, where the clientComponent 
-      // is  set to true, when your embedd a .jsff into a region, it is the region name: panelGroupLayout id
-      // so the leaflet-geonames.jsff is in the index.jspx "r1"
-      // <af:region value="#{bindings.adfleaflettaskflow1.regionModel}" id="r1"/>
-      // <af:panelGroupLayout clientComponent="true" id="map-panel">
-      
-      var eventSource = AdfPage.PAGE.findComponentByAbsoluteId("r1:map-panel");
+      // JQuery wild card search for 'map-panel' panel group layout
+      // http://myadfnotebook.blogspot.com/2011/09/gotcha-when-using-adfpagepage-to-find.html
+      var componentId = $('[id*=map-panel]').attr('id');
+      var eventSource = AdfPage.PAGE.findComponent(componentId);
       AdfCustomEvent.queue(eventSource, "jsServerListener", param, true);
   }
 
