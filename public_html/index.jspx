@@ -4,6 +4,9 @@
           xmlns:h="http://java.sun.com/jsf/html"
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
   <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <script type="text/javascript">
+  history.navigationMode = 'compatible';
+  </script>
   <f:view>
     <af:document id="d1">
       <af:form id="f1">

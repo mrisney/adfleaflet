@@ -49,6 +49,7 @@ public class GeoNamesDataControl {
     public Locations fuzzySearch(String searchString) {
         Locations locations = new Locations();
         WebService.setUserName(USER_NAME);
+
         suggestedLocations = new HashMap<String, Location>();
         try {
             ToponymSearchCriteria searchCriteria = new ToponymSearchCriteria();

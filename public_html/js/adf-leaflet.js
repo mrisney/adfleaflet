@@ -27,11 +27,15 @@
   }
 
   function onLocationFound(e) {
-      var radius = e.accuracy / 2;
-      L.marker(e.latlng).addTo(map)
-          .bindPopup("You are within " + radius + " meters from this point").openPopup();
-
-      L.circle(e.latlng, radius).addTo(map);
+      var param = {
+          LatLong: e.latlng
+      };
+       // JQuery wild card search for 'map-panel' panel group layout
+      // http://myadfnotebook.blogspot.com/2011/09/gotcha-when-using-adfpagepage-to-find.html
+      
+      var componentId = $('[id*=map-panel]').attr('id');
+      var eventSource = AdfPage.PAGE.findComponent(componentId);
+      AdfCustomEvent.queue(eventSource, "jsServerListener", param, true);
   }
 
   function onLocationError(e) {
@@ -59,9 +63,8 @@
       // a real world application could pass more meaningful data across.
       
       var location = JSON.parse(e);
-      center = new L.LatLng(location.latitude, location.longitude);
-      zoom = 12;
-      map.setView(center, zoom);
+      var center = new L.LatLng(location.latitude, location.longitude);
+      map.panTo(center);
       var contentStr;
       if (location.weather != null && location.weather.weatherIcon != null) {
           contentStr = "<img src='img/" + location.weather.weatherIcon + "'>";
@@ -76,7 +79,7 @@
       contentStr += "<br> Latitude : " + location.latitude +", Longitude : "+location.longitude;
       
       var popup = L.popup()
-          .setLatLng([location.latitude, location.longitude])
+          .setLatLng(center)
           .setContent(contentStr)
           .openOn(map);
   }
