@@ -9,5 +9,5 @@ The weather patterns are derived from the GeoNames Web services API
 http://www.geonames.org/export/web-services.html
 
 The simple map - allows the enduser to type in cities around the world, and get an up to date weather status for their 
-chosen location. A working example can be reviewied here : http://mrisney.com/adfleaflet/faces/index.jspx
+chosen location. A working example can be reviewied here : http://mrisney.com:8080/adfleaflet/faces/index.jspx
 
